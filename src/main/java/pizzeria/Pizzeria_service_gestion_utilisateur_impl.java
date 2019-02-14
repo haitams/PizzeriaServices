@@ -124,8 +124,10 @@ public class Pizzeria_service_gestion_utilisateur_impl implements Pizzeria_servi
 	}
 
 	@Override
-	public String suppression_utilisateur( int id )
-	{
-		return "" ;
+	public String suppression_utilisateur(Person personne, int id) {
+		
+		return null;
 	}
+
+	
 }
