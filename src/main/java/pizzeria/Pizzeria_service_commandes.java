@@ -32,13 +32,13 @@ public interface Pizzeria_service_commandes
 	 * @param prix the price of the pizza
 	 * @return message information to indicate whether the pizza is added or not
 	 */
-	String ajouter_pizza( @WebParam( name = "nom_pizza" ) String nom_pizza , @WebParam( name = "description_pizza" ) String description , @WebParam( name = "prix_pizza" ) double prix ) ;
+	String ajouter_pizza( @WebParam( name = "nom_pizza" ) String nom_pizza , @WebParam( name = "description_pizza" ) String description , @WebParam( name = "prix_pizza" ) double prix, @WebParam( name = "token" ) String token ) ;
 	/**
 	 * Method to delete a pizza from the menu
 	 * @param nom_pizza name of the pizza to be deleted
 	 * @return message information to indicate whether the pizza is deleted or not
 	 */
-	String supprimer_pizza( @WebParam( name = "nom_pizza" ) String nom_pizza ) ;
+	String supprimer_pizza( @WebParam( name = "nom_pizza" ) String nom_pizza, @WebParam( name = "token" ) String token ) ;
 	/**
 	 * Method to display the menu of the pizzeria
 	 * @return the list of all pizza in the array list

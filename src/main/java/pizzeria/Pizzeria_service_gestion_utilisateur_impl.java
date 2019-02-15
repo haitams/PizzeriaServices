@@ -31,7 +31,7 @@ public class Pizzeria_service_gestion_utilisateur_impl implements Pizzeria_servi
 			{
 				if ( nom.length() <= 10 )
 				{
-					Person personne = new Person( nom , mot_de_passe , this.token_generation() , this.persons.size() , is_admin ) ;
+					Person personne = new Person( nom , mot_de_passe , "" , this.persons.size() , is_admin ) ;
 					System.out.println( "addPerson method has been invoked:" + personne.toString() ) ;
 					
 					try

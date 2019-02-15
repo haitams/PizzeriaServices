@@ -13,7 +13,7 @@ public class Pizzeria_service_commandes_impl implements Pizzeria_service_command
 	private ArrayList<Pizza> pizzas = new ArrayList<Pizza>() ;
 	private Pizzeria_service_gestion_utilisateur_impl user_manager = new Pizzeria_service_gestion_utilisateur_impl();
 	
-	
+	ArrayList<Person> users = Pizzeria_service_gestion_utilisateur_impl.persons;
 	public Pizzeria_service_commandes_impl()
 	{
 		
@@ -21,14 +21,12 @@ public class Pizzeria_service_commandes_impl implements Pizzeria_service_command
 	
 	@Override
 	public String commande_pizza(String nom_pizza, int quantiter, double prix, String token) {
-		ArrayList<Person> users = Pizzeria_service_gestion_utilisateur_impl.persons;
-		System.out.println("local list "+users.size()+ "s1 list "+Pizzeria_service_gestion_utilisateur_impl.persons.size()+" second"+user_manager.getPersons().size());
+		
+		
 		for (Person personne : users)
 		{
-			System.out.println(personne.get_token());
 			if(personne.get_token().equals(token))
 			{
-				System.out.println(personne.get_token());
 				this.commandes.put(this.commandes.size(), new Commande_pizza(nom_pizza,token,quantiter,prix));
 				return "Prise de commande reussie";
 			}
@@ -43,15 +41,41 @@ public class Pizzeria_service_commandes_impl implements Pizzeria_service_command
 	}
 
 	@Override
-	public String ajouter_pizza( String nom_pizza , String description , double prix )
+	public String ajouter_pizza( String nom_pizza , String description , double prix , String token)
 	{
-		return "" ;
+		for (Person personne : users)
+		{
+			if(personne.is_admin() && personne.get_token().equals(token)) 
+			{
+				if(!nom_pizza.equals("") && !description.equals("") && prix > 2) 
+				{
+					this.pizzas.add(new Pizza(nom_pizza, description, prix));
+					return "Ajout de pizza a bien reussi";
+				}
+			}					
+		}
+		return "Ajout de pizza a echoue" ;
+	
 	}
 
 	@Override
-	public String supprimer_pizza( String nom_pizza )
+	public String supprimer_pizza( String nom_pizza,String token )
 	{
-		return "" ;
+		for (Person personne : users)
+		{
+			if(personne.is_admin() && personne.get_token().equals(token)) 
+			{
+				for(Pizza pizza : this.pizzas)
+				{
+					if(pizza.equals(nom_pizza)) 
+					{
+						this.pizzas.remove(pizza);
+						return "Suppression de pizza a bien reussi";
+					}
+				}
+			}					
+		}
+		return "Suppression de pizza a echoue" ;
 	}
 
 	@Override
