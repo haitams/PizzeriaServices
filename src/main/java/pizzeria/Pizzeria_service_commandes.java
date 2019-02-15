@@ -1,6 +1,8 @@
 package pizzeria;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.jws.WebParam;
 import javax.jws.WebService;
@@ -18,13 +20,18 @@ public interface Pizzeria_service_commandes
 	 * @param quantiter the quantity of the order
 	 * @return message information to indicate whether the command is taken or not
 	 */
-	String commande_pizza( @WebParam( name = "nom_pizza" ) String nom_pizza , @WebParam( name = "nombre_a_acheter" ) int quantiter , @WebParam( name = "prix_totale" ) double prix, @WebParam( name = "token" ) String token) ;
+	String commande_pizza( @WebParam( name = "nom_pizza" ) String nom_pizza , @WebParam( name = "nombre_a_acheter" ) int quantiter , @WebParam( name = "token" ) String token) ;
 	/**
 	 * Method to cancel pizza 
 	 * @param token a validate token
 	 * @return message information to indicate whether the command is canceled or not
 	 */
-	String annuler_commande_pizza( @WebParam( name = "token" ) String token ) ;
+	String annuler_commande_pizza( @WebParam( name = "numero_commande" ) int id, @WebParam( name = "token" ) String token ) ;
+	/**
+	 * 
+	 * @return
+	 */
+	ArrayList<Commande_pizza> get_list_commandes();
 	/**
 	 * Method to add a pizza to the menu 
 	 * @param nom_pizza name of the pizza to be added

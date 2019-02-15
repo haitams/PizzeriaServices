@@ -9,9 +9,8 @@ import javax.jws.WebService;
 @WebService( endpointInterface = "pizzeria.Pizzeria_service_commandes" , serviceName = "pizzeria_commandes" , portName = "Pizzeria_commandes_port" )
 public class Pizzeria_service_commandes_impl implements Pizzeria_service_commandes
 {
-	private Map<Integer,Commande_pizza> commandes = new HashMap<Integer,Commande_pizza>() ;
+	private ArrayList<Commande_pizza> commandes = new ArrayList<Commande_pizza>() ;
 	private ArrayList<Pizza> pizzas = new ArrayList<Pizza>() ;
-	private Pizzeria_service_gestion_utilisateur_impl user_manager = new Pizzeria_service_gestion_utilisateur_impl();
 	
 	ArrayList<Person> users = Pizzeria_service_gestion_utilisateur_impl.persons;
 	public Pizzeria_service_commandes_impl()
@@ -20,24 +19,39 @@ public class Pizzeria_service_commandes_impl implements Pizzeria_service_command
 	}
 	
 	@Override
-	public String commande_pizza(String nom_pizza, int quantiter, double prix, String token) {
+	public String commande_pizza(String nom_pizza, int quantiter, String token) {
 		
 		
 		for (Person personne : users)
 		{
 			if(personne.get_token().equals(token))
 			{
-				this.commandes.put(this.commandes.size(), new Commande_pizza(nom_pizza,token,quantiter,prix));
-				return "Prise de commande reussie";
+				double prix =0;
+				for(Pizza p : pizzas)
+				{
+					if(p.get_nom_pizza().equals(nom_pizza)) 
+					{
+						prix = p.get_prix_pizza();
+						this.commandes.add(new Commande_pizza(this.commandes.size(),nom_pizza,token,quantiter,prix*quantiter));
+						return "Prise de commande reussie";
+					}
+				}
+				
 			}
 		}
 		return "Prise de commande echoue";
 	}
 
 	@Override
-	public String annuler_commande_pizza( String token )
+	public String annuler_commande_pizza( int id , String token )
 	{
-		return "";
+		
+			if(this.commandes.get(id).token.equals(token))
+			{
+				this.commandes.remove(id);
+				return "Commande Annulee";
+			}
+		return "Echoue d'annulation de commande";
 	}
 
 	@Override
@@ -67,7 +81,7 @@ public class Pizzeria_service_commandes_impl implements Pizzeria_service_command
 			{
 				for(Pizza pizza : this.pizzas)
 				{
-					if(pizza.equals(nom_pizza)) 
+					if(pizza.get_nom_pizza().equals(nom_pizza)) 
 					{
 						this.pizzas.remove(pizza);
 						return "Suppression de pizza a bien reussi";
@@ -105,6 +119,12 @@ public class Pizzeria_service_commandes_impl implements Pizzeria_service_command
 		}
 		return null ;
 	}
+
+	@Override
+	public ArrayList<Commande_pizza> get_list_commandes() {
+		return this.commandes;
+	}
+
 
 
 
