@@ -19,20 +19,20 @@ public interface Pizzeria_service_gestion_utilisateur
 	 * @param mot_de_passe password of the user
 	 * @param verification_mot_de_passe password of the user
 	 * @param admin check if the user is admin or customer
-	 * @return true of the subscription was successfully done
+	 * @return message information about if the subscription was successfully done
 	 */
 	String inscription( @WebParam( name = "nom" ) String nom , @WebParam( name = "mot_de_passe" ) String mot_de_passe , @WebParam( name = "verification_mot_de_passe" ) String mot_de_passe_verification , @WebParam( name = "compte_administrateur" ) boolean is_admin ) ;
 	/**
 	 * Method to Login to the service of Pizzeria
 	 * @param nom name of the user
 	 * @param mot_de_passe password of the user
-	 * @return true of the login was successfully done
+	 * @return message information about if the login was successfully done
 	 */
 	String connexion( @WebParam( name = "nom" ) String nom , @WebParam( name = "mot_de_passe" ) String mot_de_passe ) ;
 	/**
 	 * Method to logout from the Pizzeria service
 	 * @param token token generated for every session
-	 * @return true if the logout was done successfully
+	 * @return message information about if the logout was done successfully
 	 */
 	String deconnexion( @WebParam( name = "token" ) String token ) ;
 	/**
@@ -46,8 +46,17 @@ public interface Pizzeria_service_gestion_utilisateur
 	 * @return the user
 	 */
 	Person getPersonAt( @WebParam( name = "numero_personne" ) String id ) ;
-	
+	/**
+	 * Method to delete user by permission of an admin
+	 * @param personne admin user
+	 * @param id the id of the user to be deleted
+	 * @return message information if the user is deleted correctly
+	 */
+	String suppression_utilisateur(Person personne , int id ) ;
+	/**
+	 * Method to generate a random Token 
+	 * @return random string token
+	 */
 	String token_generation() ;
 	
-	String suppression_utilisateur(Person personne , int id ) ;
 }

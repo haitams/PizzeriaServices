@@ -18,7 +18,7 @@ public interface Pizzeria_service_commandes
 	 * @param quantiter the quantity of the order
 	 * @return message information to indicate whether the command is taken or not
 	 */
-	String commande_pizza( @WebParam( name = "nom_pizza" ) String nom_pizza , @WebParam( name = "nombre_a_acheter" ) int quantiter ) ;
+	String commande_pizza( @WebParam( name = "nom_pizza" ) String nom_pizza , @WebParam( name = "nombre_a_acheter" ) int quantiter , @WebParam( name = "prix_totale" ) double prix, @WebParam( name = "token" ) String token) ;
 	/**
 	 * Method to cancel pizza 
 	 * @param token a validate token
@@ -47,7 +47,7 @@ public interface Pizzeria_service_commandes
 	/**
 	 * Method to get a Pizza from the list of pizza
 	 * @param nom_pizza the name of the pizza 
-	 * @return A Pizza information
+	 * @return A Pizza from the array list
 	 */
 	Pizza get_pizza_at( @WebParam( name = "nom_pizza" ) String nom_pizza ) ;
 }

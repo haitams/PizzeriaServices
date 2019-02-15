@@ -8,7 +8,7 @@ import javax.jws.WebService;
 @WebService( endpointInterface = "pizzeria.Pizzeria_service_gestion_utilisateur" , serviceName = "pizzeria_gestion_utilisateur" , portName = "Pizzeria_gestion_utilisateur_port" )
 public class Pizzeria_service_gestion_utilisateur_impl implements Pizzeria_service_gestion_utilisateur
 {
-	private ArrayList<Person> persons = new ArrayList<Person>() ;
+	public static ArrayList<Person> persons = new ArrayList<Person>() ;
 	
 	public Pizzeria_service_gestion_utilisateur_impl()
 	{
@@ -89,7 +89,7 @@ public class Pizzeria_service_gestion_utilisateur_impl implements Pizzeria_servi
 	@Override
 	public ArrayList<Person> getPersons()
 	{
-		System.out.println( "getPersons method has been invoked." ) ;
+		System.out.println( "getPersons method has been invoked. from s1" ) ;
 		return persons ;
 	}
 
