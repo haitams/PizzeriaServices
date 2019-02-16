@@ -1,8 +1,6 @@
 package pizzeria;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 import javax.jws.WebParam;
 import javax.jws.WebService;
@@ -21,17 +19,20 @@ public interface Pizzeria_service_commandes
 	 * @return message information to indicate whether the command is taken or not
 	 */
 	String commande_pizza( @WebParam( name = "nom_pizza" ) String nom_pizza , @WebParam( name = "nombre_a_acheter" ) int quantiter , @WebParam( name = "token" ) String token) ;
+	
 	/**
 	 * Method to cancel pizza 
 	 * @param token a validate token
 	 * @return message information to indicate whether the command is canceled or not
 	 */
-	String annuler_commande_pizza( @WebParam( name = "numero_commande" ) int id, @WebParam( name = "token" ) String token ) ;
+	String annuler_commande_pizza( @WebParam( name = "id_commande" ) int id, @WebParam( name = "token" ) String token ) ;
+	
 	/**
 	 * 
 	 * @return
 	 */
-	ArrayList<Commande_pizza> get_list_commandes();
+	ArrayList<Commande_pizza> get_liste_commandes() ;
+	
 	/**
 	 * Method to add a pizza to the menu 
 	 * @param nom_pizza name of the pizza to be added
@@ -40,17 +41,20 @@ public interface Pizzeria_service_commandes
 	 * @return message information to indicate whether the pizza is added or not
 	 */
 	String ajouter_pizza( @WebParam( name = "nom_pizza" ) String nom_pizza , @WebParam( name = "description_pizza" ) String description , @WebParam( name = "prix_pizza" ) double prix, @WebParam( name = "token" ) String token ) ;
+	
 	/**
 	 * Method to delete a pizza from the menu
 	 * @param nom_pizza name of the pizza to be deleted
 	 * @return message information to indicate whether the pizza is deleted or not
 	 */
 	String supprimer_pizza( @WebParam( name = "nom_pizza" ) String nom_pizza, @WebParam( name = "token" ) String token ) ;
+	
 	/**
 	 * Method to display the menu of the pizzeria
 	 * @return the list of all pizza in the array list
 	 */
-	ArrayList<Pizza> get_liste_pizza() ;
+	ArrayList<Pizza> get_carte_restaurant() ;
+	
 	/**
 	 * Method to get a Pizza from the list of pizza
 	 * @param nom_pizza the name of the pizza 

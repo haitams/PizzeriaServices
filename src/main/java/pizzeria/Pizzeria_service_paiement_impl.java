@@ -8,7 +8,14 @@ public class Pizzeria_service_paiement_impl implements Pizzeria_service_paiement
 
 
 	@Override
-	public String payer_commande()
+	public String payer_commande( String token )
+	{
+		
+		return "" ;
+	}
+
+	@Override
+	public String previsionner_facture( String token )
 	{
 		
 		return "" ;
