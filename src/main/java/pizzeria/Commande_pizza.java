@@ -2,11 +2,12 @@ package pizzeria;
 
 public class Commande_pizza
 {
-	int id ;
-	String nom_pizza ;
-	String token ;
-	int quantiter ;
-	double prix ;
+	private int id ;
+	private String nom_pizza ;
+	private String token ;
+	private int quantiter ;
+	private double prix ;
+	private String status;
 
 	public Commande_pizza( int id , String nom_pizza , String token , int quantiter , double prix )
 	{
@@ -65,5 +66,19 @@ public class Commande_pizza
 	public void set_prix( double prix )
 	{
 		this.prix = prix ;
+	}
+	
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	@Override
+	public String toString() {
+		return "Commande numero "+this.id+" : [nom pizza : "+this.nom_pizza+", quantité : "+this.quantiter+
+				", prix totale : "+this.prix+", status : "+this.status+"]";
 	}
 }

@@ -7,16 +7,18 @@ import javax.jws.WebService;
 public interface Pizzeria_service_paiement
 {
 	/**
-	 * 
-	 * @param token
-	 * @return
+	 * Method to validate payment of an order by a validate token and an existing non payed order
+	 * @param token a validate token 
+	 * @param commande number of the order
+	 * @return Set the status of the order, and display an information message of the operation done
 	 */
-	String payer_commande( @WebParam( name = "token" ) String token ) ;
+	String payer_commande( @WebParam( name = "token" ) String token, @WebParam( name = "numero_commande" ) int commande ) ;
 	
 	/**
-	 * 
-	 * @param token
-	 * @return
+	 * Method to visualize the bill or the order if it's not yet payed
+	 * @param token a validate existing token
+	 * @param commande number of the order 
+	 * @return the information about the order
 	 */
-	String previsionner_facture( @WebParam( name = "token" ) String token ) ;
+	String previsionner_facture( @WebParam( name = "token" ) String token,  @WebParam( name = "numero_commande" ) int commande ) ;
 }

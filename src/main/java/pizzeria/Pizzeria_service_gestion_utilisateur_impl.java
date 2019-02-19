@@ -2,6 +2,8 @@ package pizzeria;
 
 import java.security.SecureRandom;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 
 import javax.jws.WebService;
 
@@ -12,7 +14,9 @@ public class Pizzeria_service_gestion_utilisateur_impl implements Pizzeria_servi
 	
 	public Pizzeria_service_gestion_utilisateur_impl()
 	{
-		
+		personnes.add(new Person("ya", "ya", "", 0, true));
+		personnes.add(new Person("ba", "ba", "", 1, false));
+		personnes.add(new Person("sa", "sa", "", 2, false));
 	}
 	
 	@Override
@@ -55,15 +59,20 @@ public class Pizzeria_service_gestion_utilisateur_impl implements Pizzeria_servi
 		{
 			if ( check_bdd.get_nom().equals( nom ) == true && check_bdd.get_mot_de_passe().equals( mot_de_passe ) == true )
 			{
-				byte[] array = new byte[20] ;
-			    new SecureRandom().nextBytes( array ) ;
-			    String token =  array.toString().substring( 3 , array.toString().length() ) ;
-				check_bdd.set_token( token ) ;
-				if ( check_bdd.is_admin() == true )
+				if(check_bdd.get_token().equals("")) 
 				{
-					return "Connexion reussie, votre token a utiliser pour faire des modifications est : " + check_bdd.get_token() ;
+					byte[] array = new byte[20] ;
+				    new SecureRandom().nextBytes( array ) ;
+				    String token =  array.toString().substring( 3 , array.toString().length() ) ;
+					check_bdd.set_token( token ) ;
+					if ( check_bdd.is_admin() == true )
+					{
+						return "Connexion reussie, votre token a utiliser pour faire des modifications est : " + check_bdd.get_token() ;
+					}
+					return "Connexion reussie, votre token a utiliser pour faire une commande est : " + check_bdd.get_token() ;
+				
 				}
-				return "Connexion reussie, votre token a utiliser pour faire une commande est : " + check_bdd.get_token() ;
+				return "Vous etes deja connecté";
 			}
 		}
 		return "Nom ou mot de passe erroner." ;
@@ -76,8 +85,14 @@ public class Pizzeria_service_gestion_utilisateur_impl implements Pizzeria_servi
 		{
 			if ( check_bdd.get_token().equals( token ) == true )
 			{
+				
+				for(int i = 0; i < Pizzeria_service_commandes_impl.commandes.size();i++){
+				    if(Pizzeria_service_commandes_impl.commandes.get(i).get_token().equals(token)){
+				    	Pizzeria_service_commandes_impl.commandes.remove(i--);
+				    }
+				}
 				check_bdd.set_token( "" ) ;
-				return "Deconnexion reussie, a bientot " + check_bdd.get_nom() + " :)." ;
+				return "Deconnexion reussie, a bientot " + check_bdd.get_nom() + " (Tous vos commandes non payees sont annule)." ;
 			}
 		}
 		return "Token invalide." ;
@@ -88,15 +103,15 @@ public class Pizzeria_service_gestion_utilisateur_impl implements Pizzeria_servi
 	{
 		for ( Person check_bdd : Pizzeria_service_gestion_utilisateur_impl.personnes )
 		{
-			if ( check_bdd.get_token().equals( token ) == true )
+			if ( check_bdd.get_token().equals( token ) )
 			{
-				if ( check_bdd.is_admin() == true )
+				if ( check_bdd.is_admin() )
 				{
 					return Pizzeria_service_gestion_utilisateur_impl.personnes ;
 				}
 				throw new NullPointerException( "Seul les administrateurs peuvent obtenir la liste complete des utilisateurs." ) ;
 			}
-			
+						
 		}
 		throw new NullPointerException( "Token invalide." ) ;
 	}

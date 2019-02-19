@@ -7,60 +7,93 @@ import javax.jws.WebService;
 @WebService( endpointInterface = "pizzeria.Pizzeria_service_commandes" , serviceName = "pizzeria_commandes" , portName = "Pizzeria_commandes_port" )
 public class Pizzeria_service_commandes_impl implements Pizzeria_service_commandes
 {
-	private ArrayList<Commande_pizza> commandes = new ArrayList<Commande_pizza>() ;
+	public static ArrayList<Commande_pizza> commandes = new ArrayList<Commande_pizza>() ;
 	private ArrayList<Pizza> pizzas = new ArrayList<Pizza>() ;
 	private ArrayList<Person> personnes = Pizzeria_service_gestion_utilisateur_impl.personnes ;
 	
 	public Pizzeria_service_commandes_impl()
 	{
-		
+		pizzas.add(new Pizza(0,"cannibale", "poulet, viande hache, mergez, moza", 8));
+		pizzas.add(new Pizza(1,"savoyarde", "jambon, viande hache, champignon, moza", 9));
 	}
 	
 	@Override
-	public String commande_pizza( String nom_pizza , int quantiter , String token )
+	public String commande_pizza( int id_pizza , int quantiter , String token )
 	{
-		for ( Person check_bdd_personne : this.personnes )
+		if(this.personnes.size()> 0) 
 		{
-			if ( check_bdd_personne.get_token().equals( token ) )
+			for ( Person check_bdd_personne : this.personnes )
 			{
-				if ( check_bdd_personne.is_admin() == false )
+				if (check_bdd_personne.get_token() != null &&  check_bdd_personne.get_token().equals( token )  )
 				{
-					double prix = 0 ;
-					for( Pizza check_bdd_pizza : this.pizzas )
+					if ( check_bdd_personne.is_admin() == false )
 					{
-						if ( check_bdd_pizza.get_nom_pizza().equals( nom_pizza ) ) 
+						double prix = 0 ;
+						for( Pizza check_bdd_pizza : this.pizzas )
 						{
-							prix = check_bdd_pizza.get_prix_pizza() ;
-							this.commandes.add( new Commande_pizza( this.commandes.size() , nom_pizza , token , quantiter , prix * quantiter ) ) ;
-							return "Prise de commande reussie" ;
+							if ( check_bdd_pizza.getId_pizza() ==  id_pizza  ) 
+							{
+								prix = check_bdd_pizza.get_prix_pizza() ;
+								Commande_pizza commande =  new Commande_pizza( Pizzeria_service_commandes_impl.commandes.size() , check_bdd_pizza.get_nom_pizza() , token , quantiter , prix * quantiter );
+								commande.setStatus("non payee");
+								Pizzeria_service_commandes_impl.commandes.add(commande ) ;
+								return "Prise de commande reussie" ;
+							}
 						}
+						return "Nom de pizza errone";
 					}
+					return "Seul les utilisateurs non administrateur peuvent commander une pizza." ;
 				}
-				return "Seul les utilisateurs non administrateur peuvent commander une pizza." ;
 			}
+			return "Token invalide" ;
 		}
-		return "Token invalide" ;
+		else
+		{
+			return "Aucune utilisateur dans la base de donnée";
+		}
 	}
 
 	@Override
 	public String annuler_commande_pizza( int id , String token )
 	{
-		if ( id >= 0 && id < this.commandes.size() )
+		if ( id >= 0 && id < Pizzeria_service_commandes_impl.commandes.size() )
 		{
-			if ( this.commandes.get( id ).token.equals( token ) )
-			{
-				this.commandes.remove( id ) ;
-				return "La commande numero " + id + " est annuler." ;
+			for(Person personne : personnes) {
+				if ( personne.get_token().equals( token ) )
+				{
+					if(Pizzeria_service_commandes_impl.commandes.get( id ).getStatus().equals("non payee"))
+					{
+						Pizzeria_service_commandes_impl.commandes.remove( id ) ;
+						return "La commande numero " + id + " est annulee." ;
+					}
+					else
+					{
+						return "cette commande est deja payee";
+					}
+				}
 			}
-			return "Cette commande n'est pas la votre." ;
+			return "Token invalid";
+			
 		}
 		return "Id invalide" ;
 	}
 
 	@Override
-	public ArrayList<Commande_pizza> get_liste_commandes()
+	public ArrayList<Commande_pizza> get_liste_commandes(String token)
 	{
-		return this.commandes ;
+		ArrayList<Commande_pizza> mycommands = new ArrayList<>();
+		for ( Person check_bdd_personne : this.personnes )
+		{
+			if ( check_bdd_personne.get_token().equals( token ) )
+			{
+				for(Commande_pizza cmd : commandes) {
+					if(cmd.get_token().equals(token))
+						mycommands.add(cmd);
+				}
+				return mycommands ;
+			}
+		}
+		throw new NullPointerException( "Token invalid." ) ;
 	}
 
 	@Override
@@ -85,7 +118,7 @@ public class Pizzeria_service_commandes_impl implements Pizzeria_service_command
 						{
 							if ( prix > 2 )
 							{
-								this.pizzas.add( new Pizza( nom_pizza , description , prix ) ) ;
+								this.pizzas.add( new Pizza( this.pizzas.size(),nom_pizza , description , prix ) ) ;
 								return "La pizza " + nom_pizza + " est maintenant disponible pour la vente." ;
 							}
 							return "L'entreprise a pour regle de rentabiliter de ne pas vendre une pizza pour moins de 2 euros." ;

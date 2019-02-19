@@ -16,11 +16,10 @@ public interface Pizzeria_service_gestion_utilisateur
 	 * @param nom name of the user
 	 * @param mot_de_passe password of the user
 	 * @param verification_mot_de_passe password of the user
-	 * @param admin check if the user is admin or customer
+	 * @param is_admin check if the user is admin or customer
 	 * @return message information about if the subscription was successfully done
 	 */
-	String inscription( @WebParam( name = "nom" ) String nom , @WebParam( name = "mot_de_passe" ) String mot_de_passe , @WebParam( name = "verification_mot_de_passe" ) String mot_de_passe_verification , @WebParam( name = "compte_administrateur" ) boolean is_admin ) ;
-	
+	String inscription( @WebParam( name = "nom" ) String nom , @WebParam( name = "mot_de_passe" ) String mot_de_passe , @WebParam( name = "verification_mot_de_passe" ) String mot_de_passe_verification , @WebParam( name = "compte_administrateur" ) boolean is_admin ) ;	
 	/**
 	 * Method to Login to the service of Pizzeria
 	 * @param nom name of the user
@@ -37,24 +36,24 @@ public interface Pizzeria_service_gestion_utilisateur
 	String deconnexion( @WebParam( name = "token" ) String token ) ;
 	
 	/**
-	 * Method of all users subscribed to the service
-	 * @param token
+	 * Method to display all users subscribed to the services
+	 * @param token a validate token of an existing administrator
 	 * @return the list of users
 	 */
-	ArrayList<Person> get_persons( String token ) ;
+	ArrayList<Person> get_persons( @WebParam( name = "token" )  String token ) ;
 	
 	/**
 	 * Method to get a User from the list of all users
 	 * @param id the id of the user wanted
-	 * @param token
+	 * @param token a validate token  of an an existing administrator
 	 * @return the user
 	 */
 	Person get_person_at( @WebParam( name = "numero_personne" ) int id , String token ) ;
 	
 	/**
-	 * Method to delete user by permission of an admin
+	 * Method to delete user by permission of an administrator
 	 * @param id the id of the user to be deleted
-	 * @param token TODO
+	 * @param token a validate token
 	 * @return message information if the user is deleted correctly
 	 */
 	String suppression_utilisateur( @WebParam( name = "numero_personne" ) int id , String token ) ;

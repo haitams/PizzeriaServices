@@ -5,13 +5,26 @@ public class Pizza
 	private String nom_pizza ;
 	private String description_pizza ;
 	private double prix_pizza ;
+	private int id_pizza;
 	
-	public Pizza( String nom , String description , double prix )
+	public Pizza( int id , String nom , String description , double prix )
 	{
+		this.id_pizza = id;
 		this.nom_pizza = nom ;
 		this.description_pizza = description ;
 		this.prix_pizza = prix ;
 	}
+	
+	
+	public int getId_pizza() {
+		return id_pizza;
+	}
+
+
+	public void setId_pizza(int id_pizza) {
+		this.id_pizza = id_pizza;
+	}
+
 
 	public String get_nom_pizza()
 	{
