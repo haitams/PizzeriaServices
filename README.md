@@ -51,6 +51,3 @@ http://localhost:8080/ws/pizzeria/gestion_utilisateur?wsdl
 http://localhost:8080/ws/pizzeria/commandes?wsdl
 http://localhost:8080/ws/pizzeria/paiement?wsdl
 
-
-
-* Ouvrir un navigateur web et tester l'URL suivante : <http://localhost:8080/ws/notebookservice?wsdl> et visualiser le WSDL.
