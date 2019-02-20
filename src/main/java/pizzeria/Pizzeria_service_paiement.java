@@ -3,7 +3,7 @@ package pizzeria;
 import javax.jws.WebParam;
 import javax.jws.WebService;
 /**
- * Class to implement the payment service
+ * Class to define the payment service
  * @author LUCK BASTIEN - OURKIA YASSIN
  *
  */

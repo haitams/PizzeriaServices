@@ -3,7 +3,12 @@ package pizzeria;
 import java.util.ArrayList;
 
 import javax.jws.WebService;
-
+/**
+ * 
+ * Class to implement the order service
+ * @author LUCK BASTIEN - OURKIA YASSIN
+ *
+ */
 @WebService( endpointInterface = "pizzeria.Pizzeria_service_commandes" , serviceName = "pizzeria_commandes" , portName = "Pizzeria_commandes_port" )
 public class Pizzeria_service_commandes_impl implements Pizzeria_service_commandes
 {

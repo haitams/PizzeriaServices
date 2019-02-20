@@ -6,7 +6,11 @@ import java.util.Collection;
 import java.util.Collections;
 
 import javax.jws.WebService;
-
+/**
+ * Class to implement the User manager service
+ * @author LUCK BASTIEN - OURKIA YASSIN
+ * 
+ */
 @WebService( endpointInterface = "pizzeria.Pizzeria_service_gestion_utilisateur" , serviceName = "pizzeria_gestion_utilisateur" , portName = "Pizzeria_gestion_utilisateur_port" )
 public class Pizzeria_service_gestion_utilisateur_impl implements Pizzeria_service_gestion_utilisateur
 {

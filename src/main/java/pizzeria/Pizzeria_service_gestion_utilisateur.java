@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import javax.jws.WebParam;
 import javax.jws.WebService;
 /**
- * Class to implement the User Manager service ( Inscription , Connection - Managing Users  )
+ * Class to define the User Manager service ( Inscription , Connection - Managing Users  )
  * @author  LUCK Bastien - OURKIA Yassin
  * 
  */

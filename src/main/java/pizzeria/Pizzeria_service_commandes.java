@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import javax.jws.WebParam;
 import javax.jws.WebService;
 /**
- * Class to implement the order service (take or cancel an order, add or delete pizza, 
+ * Class to Define the order service (take or cancel an order, add or delete pizza, 
  * @author LUCK Bastien - OURKIA Yassin
  *
  */

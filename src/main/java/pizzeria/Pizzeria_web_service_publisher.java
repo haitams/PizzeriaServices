@@ -1,7 +1,11 @@
 package pizzeria;
 
 import javax.xml.ws.Endpoint;
-
+/**
+ * Main class to launch the services
+ * @author LUCK BASTIEN - OURKIA YASSIN
+ *
+ */
 public class Pizzeria_web_service_publisher
 {
 	public static void main( String[] args ) throws ClassNotFoundException
