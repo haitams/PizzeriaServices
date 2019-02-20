@@ -77,3 +77,9 @@ Maintenant vous pouvez visualiser les fichier wsdl dans un navigateur ou un SOAP
 
 ![screen shot 2019-02-20 at 16 15 27](https://user-images.githubusercontent.com/19637807/53101851-de8a1280-352a-11e9-9fc3-6d83e4f42b39.png)
 
+## La documentation
+Pour generer et voir la documentation, tapez la commande suivante 
+
+```bash
+mvn javadoc::aggregate
+```
