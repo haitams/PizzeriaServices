@@ -22,6 +22,7 @@ Pour deployer les services localement il suffit de lancer les commandes suivante
 mvn clean package
 java -cp "target/classes:target/dependency/*" pizzeria.Pizzeria_web_service_publisher
 ```
+
 et vous pouvez visualiser les fichier wsdl dans un navigateur ou un SOAPui avec les liens suivants :
 
 > http://localhost:9991/ws/pizzeria/gestion_utilisateur?wsdl
@@ -44,10 +45,16 @@ Après vous lancer le serveur Docker et vous taper la commande suivante pour heb
 
 ```bash
 mvn clean package -P war
-docker run --rm --name helloworldservice-tomcat -v $(pwd)/target/ws.war:/usr/local/tomcat/webapps/ws.war -it -p 8080:8080 tomcat:9.0.12-jre11-slim
 ```
 
-et vous pouvez visualiser les fichier wsdl dans un navigateur ou un SOAPui avec les liens suivants :
+![screen shot 2019-02-20 at 15 47 14](https://user-images.githubusercontent.com/19637807/53100853-dc26b900-3528-11e9-8588-3f2c44cf4e97.png)
+
+```bash
+docker run --rm --name helloworldservice-tomcat -v $(pwd)/target/ws.war:/usr/local/tomcat/webapps/ws.war -it -p 8080:8080 tomcat:9.0.12-jre11-slim
+```
+![screen shot 2019-02-20 at 15 48 03](https://user-images.githubusercontent.com/19637807/53101068-59522e00-3529-11e9-810e-f00793a016b6.png)
+
+Maintenant vous pouvez visualiser les fichier wsdl dans un navigateur ou un SOAPui avec les liens suivants :
 
 > http://localhost:8080/ws/pizzeria/gestion_utilisateur?wsdl
 
