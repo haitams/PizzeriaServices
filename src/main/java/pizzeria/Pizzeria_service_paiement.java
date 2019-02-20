@@ -2,7 +2,11 @@ package pizzeria;
 
 import javax.jws.WebParam;
 import javax.jws.WebService;
-
+/**
+ * Class to implement the payment service
+ * @author LUCK BASTIEN - OURKIA YASSIN
+ *
+ */
 @WebService( name = "pizzeria_paiement" , targetNamespace = "http://pizzeria/paiement" )
 public interface Pizzeria_service_paiement
 {

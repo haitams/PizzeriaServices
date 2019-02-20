@@ -5,8 +5,9 @@ import java.util.ArrayList;
 import javax.jws.WebParam;
 import javax.jws.WebService;
 /**
- * @author  LUCK Bastien - OURKIA Yassin
  * Class to implement the User Manager service ( Inscription , Connection - Managing Users  )
+ * @author  LUCK Bastien - OURKIA Yassin
+ * 
  */
 @WebService( name = "pizzeria_gestion_utilisateur" , targetNamespace = "http://pizzeria/gestion_utilisateur" )
 public interface Pizzeria_service_gestion_utilisateur
