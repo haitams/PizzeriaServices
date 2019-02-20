@@ -1,12 +1,27 @@
 package pizzeria;
-
+/**
+ * class to implement to identification of a Pizza
+ * @author LUCK Bastien - OURKIA Yassin
+ *
+ */
 public class Pizza
 {
+	/*--------------------------------------------------
+	 * 
+	 * 		Attributes
+	 * 
+	 --------------------------------------------------*/
 	private String nom_pizza ;
 	private String description_pizza ;
 	private double prix_pizza ;
 	private int id_pizza;
-	
+	/**
+	 * Constructor with parameters
+	 * @param id id of the pizza
+	 * @param nom name of the pizza
+	 * @param description description of the pizza
+	 * @param prix the price of each unity of the pizza
+	 */
 	public Pizza( int id , String nom , String description , double prix )
 	{
 		this.id_pizza = id;
@@ -15,7 +30,11 @@ public class Pizza
 		this.prix_pizza = prix ;
 	}
 	
-	
+	/*--------------------------------------------------
+	 * 
+	 * 		Getters and setters
+	 * 
+	 --------------------------------------------------*/
 	public int getId_pizza() {
 		return id_pizza;
 	}

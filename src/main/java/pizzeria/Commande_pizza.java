@@ -1,14 +1,30 @@
 package pizzeria;
-
+/**
+ * Class to implement the order 
+ * @author LUCK BASTIEN - OURKIA YASSIN
+ *
+ */
 public class Commande_pizza
 {
-	private int id ;
+	/*--------------------------------------------------
+	 * 
+	 * 		Attributes
+	 * 
+	 --------------------------------------------------*/
+	private int id ; 
 	private String nom_pizza ;
 	private String token ;
 	private int quantiter ;
 	private double prix ;
 	private String status;
-
+	/**
+	 * Constructor with parameters to initiate the order
+	 * @param id id of the order
+	 * @param nom_pizza name of pizza
+	 * @param token token of the user
+	 * @param quantiter the quantity of the order
+	 * @param prix the total price
+	 */
 	public Commande_pizza( int id , String nom_pizza , String token , int quantiter , double prix )
 	{
 		this.nom_pizza = nom_pizza ;
@@ -17,7 +33,11 @@ public class Commande_pizza
 		this.prix = prix ;
 		this.id = id ;
 	}
-	
+	/*--------------------------------------------------
+	 * 
+	 * 		Getters and setters
+	 * 
+	 --------------------------------------------------*/
 	public int get_id()
 	{
 		return id ;
@@ -75,7 +95,6 @@ public class Commande_pizza
 	public void setStatus(String status) {
 		this.status = status;
 	}
-
 	@Override
 	public String toString() {
 		return "Commande numero "+this.id+" : [nom pizza : "+this.nom_pizza+", quantité : "+this.quantiter+

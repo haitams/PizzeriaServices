@@ -7,10 +7,15 @@ Dans cette application nous avons réalisé trois service pour la gestion d'une 
 * Gestion des commandes
 * Gestion de paiement 
 
-## 
+## Description de lancement : 
 
-> Remarquez que le contenu des fichiers Java est identique au projet *jaxws-tutorial-exercice1*.
+* Cloner le projet à partir de cette commande 
 
+```bash
+git clone https://github.com/yassinourkia/PizzeriaServices.git
+```
+
+* Lancer
 * Saisir la ligne de commande suivante depuis la racine du projet pour compiler et construire le fichier jar du projet.
 
 ```bash

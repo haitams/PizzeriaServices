@@ -6,7 +6,7 @@ import javax.jws.WebParam;
 import javax.jws.WebService;
 /**
  * @author  LUCK Bastien - OURKIA Yassin
- * Class to implement the UserManager service ( Inscription , Connection )
+ * Class to implement the User Manager service ( Inscription , Connection - Managing Users  )
  */
 @WebService( name = "pizzeria_gestion_utilisateur" , targetNamespace = "http://pizzeria/gestion_utilisateur" )
 public interface Pizzeria_service_gestion_utilisateur

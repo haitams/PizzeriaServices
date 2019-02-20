@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <endpoints xmlns='http://java.sun.com/xml/ns/jax-ws/ri/runtime' version='2.0'>
-	<endpoint
-		name='notebookservice'
-		implementation='fr.mickaelbaron.jaxwstutorialexercice6.NotebookServiceImpl'
-		url-pattern='/notebookservice'/>
+    <endpoint
+        name='pizzeria_gestion_utilisateur'
+        implementation='pizzeria.Pizzeria_service_gestion_utilisateur_impl'
+        url-pattern='/pizzeria/gestion_utilisateur'/>
+		    <endpoint
+        name='pizzeria_commandes'
+        implementation='pizzeria.Pizzeria_service_commandes_impl'
+        url-pattern='/pizzeria/commandes'/>
+		    <endpoint
+        name='pizzeria_paiement'
+        implementation='pizzeria.Pizzeria_service_paiement_impl'
+        url-pattern='/pizzeria/paiement'/>
 </endpoints>
-
