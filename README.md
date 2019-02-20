@@ -23,13 +23,22 @@ mvn clean package
 java -cp "target/classes:target/dependency/*" pizzeria.Pizzeria_web_service_publisher
 ```
 
+![screen shot 2019-02-20 at 15 46 45](https://user-images.githubusercontent.com/19637807/53101375-e72e1900-3529-11e9-94c0-d9ddb905e177.png)
+
+
 et vous pouvez visualiser les fichier wsdl dans un navigateur ou un SOAPui avec les liens suivants :
 
 > http://localhost:9991/ws/pizzeria/gestion_utilisateur?wsdl
 
+![g_u](https://user-images.githubusercontent.com/19637807/53101608-69b6d880-352a-11e9-95f5-8943b32b000c.png)
+
 > http://localhost:9991/ws/pizzeria/commandes?wsdl
 
+![local](https://user-images.githubusercontent.com/19637807/53101479-1cd30200-352a-11e9-8045-fe3783aa8272.png)
+
 > http://localhost:9991/ws/pizzeria/paiement?wsdl
+
+![paiementlocal](https://user-images.githubusercontent.com/19637807/53101676-88b56a80-352a-11e9-880d-f2b36b18c54d.png)
 
 
 * Deployer les service sur Docker
@@ -58,7 +67,13 @@ Maintenant vous pouvez visualiser les fichier wsdl dans un navigateur ou un SOAP
 
 > http://localhost:8080/ws/pizzeria/gestion_utilisateur?wsdl
 
+![screen shot 2019-02-20 at 15 48 51](https://user-images.githubusercontent.com/19637807/53101754-ac78b080-352a-11e9-8e21-aa187c5210b6.png)
+
 > http://localhost:8080/ws/pizzeria/commandes?wsdl
 
+![screen shot 2019-02-20 at 16 15 47](https://user-images.githubusercontent.com/19637807/53101881-ea75d480-352a-11e9-86fa-27906f4ed4c5.png)
+
 > http://localhost:8080/ws/pizzeria/paiement?wsdl
+
+![screen shot 2019-02-20 at 16 15 27](https://user-images.githubusercontent.com/19637807/53101851-de8a1280-352a-11e9-9fc3-6d83e4f42b39.png)
 
