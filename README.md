@@ -24,9 +24,9 @@ java -cp "target/classes:target/dependency/*" pizzeria.Pizzeria_web_service_publ
 ```
 et vous pouvez visualiser les fichier wsdl dans un navigateur ou un SOAPui avec les liens suivants :
 
-http://localhost:9991/ws/pizzeria/gestion_utilisateur?wsdl
-http://localhost:9991/ws/pizzeria/commandes?wsdl
-http://localhost:9991/ws/pizzeria/paiement?wsdl
+> http://localhost:9991/ws/pizzeria/gestion_utilisateur?wsdl
+> http://localhost:9991/ws/pizzeria/commandes?wsdl
+> http://localhost:9991/ws/pizzeria/paiement?wsdl
 
 
 * Deployer les service sur Docker
@@ -47,7 +47,7 @@ docker run --rm --name helloworldservice-tomcat -v $(pwd)/target/ws.war:/usr/loc
 
 et vous pouvez visualiser les fichier wsdl dans un navigateur ou un SOAPui avec les liens suivants :
 
-http://localhost:8080/ws/pizzeria/gestion_utilisateur?wsdl
-http://localhost:8080/ws/pizzeria/commandes?wsdl
-http://localhost:8080/ws/pizzeria/paiement?wsdl
+> http://localhost:8080/ws/pizzeria/gestion_utilisateur?wsdl
+> http://localhost:8080/ws/pizzeria/commandes?wsdl
+> http://localhost:8080/ws/pizzeria/paiement?wsdl
 
