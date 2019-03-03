@@ -43,14 +43,14 @@ et vous pouvez visualiser les fichier wsdl dans un navigateur ou un SOAPui avec 
 
 * Deployer les service sur Docker
 
-Vous pouvez également lancer les services et les heberger dans un serveur docker, pour se faire, faut tout d'abord s'assurer que vous avez bien installé la version de docker qui va avec la version de JDK11
+Vous pouvez également lancer les services et les heberger dans un serveur docker, pour se faire, faut tout d'abord s'assurer que vous avez bien installé la version de docker qui supporte la version de JDK (11)
 vous pouvez la telecharger en utilisant la commande suivante :
 
 ```bash
 docker pull tomcat:9.0.12-jre11-slim
 ```
 
-Après vous lancer le serveur Docker et vous taper la commande suivante pour heberger les services dans le docker :
+Après vous lancez le serveur Docker et vous tapez la commande suivante pour heberger les services dans le docker :
 
 ```bash
 mvn clean package -P war
